@@ -1,0 +1,55 @@
+在python中装饰器可以用来给已有函数加上其他的功能，又不用更改原本存在函数的代码
+- 这是不用装饰器的版本
+```
+@deco
+def func():
+    print('func called')
+
+
+    
+def use_logging(func):
+
+    def wrapper():
+        print("%s is running" % func.__name__)
+        return func()
+    return wrapper
+ 
+def foo():
+    print('you foo')
+
+def main():
+    fov = use_logging(func)
+
+main()
+
+```
+- 这是使用装饰器的版本
+```
+
+def deco(func):
+    print(func)
+    return func
+@deco
+def func():
+    print('func called')
+
+
+def use_logging(func):
+
+    def wrapper():
+        print("%s is running" % func.__name__)
+        return func()
+    return wrapper
+
+@use_logging    
+def foo():
+    print('you foo')
+    
+
+def main():
+
+    foo()
+
+main()
+
+```
